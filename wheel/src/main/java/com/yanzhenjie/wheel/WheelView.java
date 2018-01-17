@@ -43,19 +43,16 @@ public class WheelView extends View {
     /**
      * Top and bottom shadows colors
      */
-    private static final int[] SHADOWS_COLORS = new int[]{0xFF111111,
-            0x00AAAAAA, 0x00AAAAAA};
+    private static final int[] SHADOWS_COLORS = new int[]{0xFF111111, 0x00AAAAAA, 0x00AAAAAA};
 
     /**
      * Top and bottom items offset (to hide that)
      */
     private static final int ITEM_OFFSET_PERCENT = 10;
-
     /**
      * Left and right padding value
      */
     private static final int PADDING = 10;
-
     /**
      * Default count of visible items
      */
@@ -69,11 +66,10 @@ public class WheelView extends View {
 
     // Item height
     private int itemHeight = 0;
-
     // Center Line
     private Drawable centerDrawable;
-
     // Shadows drawables
+    private int[] mShadowColors = SHADOWS_COLORS;
     private GradientDrawable topShadow;
     private GradientDrawable bottomShadow;
 
@@ -171,6 +167,20 @@ public class WheelView extends View {
             }
         }
     };
+
+    /**
+     * Set the shadow of the middle.
+     */
+    public void setCenterShadow(Drawable centerDrawable) {
+        this.centerDrawable = centerDrawable;
+    }
+
+    /**
+     * Set the top and bottom of the shadow.
+     */
+    public void setShadowsColors(int[] colors) {
+        this.mShadowColors = colors;
+    }
 
     /**
      * Set the the specified scrolling interpolator
@@ -445,14 +455,12 @@ public class WheelView extends View {
         }
 
         if (topShadow == null) {
-            topShadow = new GradientDrawable(Orientation.TOP_BOTTOM, SHADOWS_COLORS);
+            topShadow = new GradientDrawable(Orientation.TOP_BOTTOM, mShadowColors);
         }
 
         if (bottomShadow == null) {
-            bottomShadow = new GradientDrawable(Orientation.BOTTOM_TOP, SHADOWS_COLORS);
+            bottomShadow = new GradientDrawable(Orientation.BOTTOM_TOP, mShadowColors);
         }
-
-        setBackgroundResource(R.drawable.wheel_bg);
     }
 
     /**
