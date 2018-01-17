@@ -90,11 +90,11 @@ public class WheelView extends View {
     private List<OnWheelClickedListener> clickingListeners = new LinkedList<>();
 
     public WheelView(Context context) {
-        super(context, null, 0);
+        this(context, null, 0);
     }
 
     public WheelView(Context context, AttributeSet attrs) {
-        super(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     /**
